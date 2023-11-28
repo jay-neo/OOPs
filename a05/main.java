@@ -122,6 +122,8 @@ class Main{
         list.add(new DataOperator("Name7",13,"Excellent",100));
         list.add(new JavaProfessional("Name8",14,"Fair",6,"Intermidiate"));
         list.add(new PythonProfessional("Name9",15,"Fair",7,"Beginner"));
+        
+        list.add(new Developer((ComputerProfessional)list.get(0),2));
         list.add(new JavaProfessional((ComputerProfessional)list.get(1),3,"Beginner"));
         list.add(new JavaProfessional((Developer)list.get(4),"Intermidiate"));
         list.add(new PythonProfessional((ComputerProfessional)list.get(2),4,"Beginner"));
@@ -157,10 +159,10 @@ class Main{
         // }
         for(Object emp: list){
             Class<?> obj = emp.getClass();
-            try{
+            try {
                 Method displayMethod = obj.getMethod("display");
                 displayMethod.invoke(emp);
-            }catch(Exception e){
+            } catch (Exception e) {
                 System.out.println("Error displaying employee: " + e.getMessage());
             }
             System.out.println("*".repeat(30));

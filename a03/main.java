@@ -49,7 +49,3 @@ class Student{
         S4.showdata();
     }
 }
-
-// this code inherits from jay-neo
-
-

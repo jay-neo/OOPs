@@ -67,6 +67,3 @@ class Arithmetic{
         A3.display();
     }
 }
-
-
-// this code inherits from jay-neo

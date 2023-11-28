@@ -1,112 +1,86 @@
-class Shape{
-    protected double side;
-    Shape(){
-        // User defind default constructor for subclasses
-    }
-    Shape(double s){
-        this.side = s;
-    }
-    public double get(){
-        return side;
-    }
-    public void put(double s){
-        this.side = s;
-    }
-    public double calc_area(){
-        System.out.println("This code inherits from jay-neo");
-        return 0;
-    }
+import java.util.Scanner;
+abstract class Shape{
+    int a;
+    int b;
+    void get(){ }
+    void cal_area(){ }
 }
 class Square extends Shape{
-    private double side;
-    Square(double s){
-        this.side = s;
+    void get(){
+        System.out.println("Side of the square: " + a);
     }
-    public double get(){
-        return side;
+    void put(){
+        Scanner sc  = new Scanner(System.in); 
+        System.out.print("Enter the side of square: "); 
+        this.a = sc.nextInt(); 
+        while(this.a<=0){ 
+            System.out.print("Invalid Input!!!\nEnter the side value again: "); 
+            this.a = sc.nextInt(); 
+        } 
     }
-    public void put(double s){
-        this.side = s;
-    }
-    public double calc_area(){
-        return Math.round(side*side*100.0)/100.0;
+    void cal_area(){
+        System.out.println("Area of the square: " + Math.round(a*b*100.0)/100.0);
     }
 }
 class Rectangle extends Shape{
-    private double length;
-    private double breadth;
-    Rectangle(double l,double b){
-        this.length = l;
-        this.breadth = b;
+    void get(){ 
+        System.out.println("For the rectangle length: " + a + " and width: "+b+"\n"); 
     }
-    public double getLenght(){
-        return length;
-    }
-    public double getBreadth(){
-        return breadth;
-    }
-    public void putLenght(double l){
-        this.length = l;
-    }
-    public void putBreadth(double b){
-        this.breadth = b;
-    }
-    public double calc_area(){
-        return Math.round(length*breadth*100.0)/100.0;
+    void put(){ 
+        Scanner sc  = new Scanner(System.in); 
+        System.out.print("Enter the length of rectangle : "); 
+        this.a = sc.nextInt(); 
+        while(this.a<=0){ 
+            System.out.print("Invalid Input!!!\nEnter the length value again : "); 
+            this.a = sc.nextInt(); 
+        } 
+        System.out.print("Enter the width of the rectangle : "); 
+        this.b = sc.nextInt(); 
+        while(this.b<=0){ 
+            System.out.print("Invalid Input!!!\nEnter the width value again : "); 
+            this.b = sc.nextInt(); 
+        } 
+    } 
+    void cal_area(){ 
+        System.out.println("Area of the rectangle: " + a*b); 
     }
 }
 class Triangle extends Shape{
-    private double side1;
-    private double side2;
-    private double side3;
-    Triangle(double a,double b,double c){
-        this.side1 = a;
-        this.side2 = b;
-        this.side3 = c;
+    void get(){
+        System.out.println("For the triangle base: " + a + " and height: " + b);
     }
-    Triangle(double a){
-        this.side1 = a;
-        this.side2 = a;
-        this.side3 = a;
-    }
-    public double getSide1(){
-        return side1;
-    }
-    public double getSide2(){
-        return side2;
-    }
-    public double getSide3(){
-        return side3;
-    }
-    public void putSide1(double a){
-        this.side1 = a;
-    }
-    public void putSide2(double b){
-        this.side2 = b;
-    }
-    public void putSide3(double c){
-        this.side3 = c;
-    }
-    public double calc_area(){
-        double S = (side1 + side2 + side3);
-        return Math.round(Math.sqrt(S * (S-side1) * (S-side2) * (S-side3)) * 100.0)/100.0;
+    void put(){
+        Scanner sc  = new Scanner(System.in); 
+        System.out.print("Enter the base of triangle : "); 
+        this.a = sc.nextInt(); 
+        while(a<=0){ 
+            System.out.print("Invalid Input!!!\nEnter the base value again : "); 
+            this.a = sc.nextInt(); 
+        } 
+        System.out.print("Enter the height of triangle : "); 
+        this.b = sc.nextInt(); 
+        while(b<=0){ 
+            System.out.print("Invalid Input!!!\nEnter the height value again : "); 
+            this.b = sc.nextInt(); 
+        } 
+    } 
+    void cal_area(){
+        System.out.println("Area of the square: " + 0.5*a*b); 
     }
 }
 class Main{
     public static void main(String[] args){
-        Shape sh1 = new Shape(2);
-        Square sq1 = new Square(5);
-        Rectangle rec1 = new Rectangle(3,4);
-        Triangle tri1 = new Triangle(4);
-        Triangle tri2 = new Triangle(2,3,4);
-        System.out.println("For Square 1, Area : " + sh1.calc_area());
-        System.out.println("For Rectrinagle 1, Area : " + rec1.calc_area());
-        System.out.println("For Triangle 1, Area : " + tri1.calc_area());
-        System.out.println("For Triangle 2, Area : " + tri2.calc_area());
-
-        System.out.println("For Square 1, Side :" + sq1.get());
-        sq1.put(6);
-        System.out.println("For Square 1, Side :" + sq1.get());
-        System.out.println("For Square 1, Area :" + sq1.calc_area());
+        Square s1 = new Square(); 
+        s1.put(); 
+        s1.cal_area(); 
+        s1.get();
+        Triangle t1 = new Triangle(); 
+        t1.put(); 
+        t1.cal_area(); 
+        t1.get(); 
+        Rectangle r1 = new Rectangle(); 
+        r1.put(); 
+        r1.cal_area(); 
+        r1.get(); 
     }
 }
